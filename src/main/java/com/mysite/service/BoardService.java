@@ -20,7 +20,9 @@ public class BoardService {
 	}
 
 	public BoardVo read(int no) {
-		return boarddao.read(no);
+		BoardVo bvo = boarddao.read(no);
+		boarddao.plusHit(bvo);
+		return bvo;
 		
 	}
 
@@ -29,10 +31,6 @@ public class BoardService {
 	}
 	
 
-	public int plusHit(BoardVo vo) {
-		return boarddao.plusHit(vo);
-		
-	}
 	public int modify(BoardVo vo) {
 		return boarddao.modify(vo);
 		

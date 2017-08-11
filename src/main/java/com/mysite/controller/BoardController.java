@@ -36,11 +36,12 @@ public class BoardController {
 		System.out.println(no);
 		BoardVo boardVo = boardservice.read(no);
 		System.out.println(boardVo);
+		/*
 		int hit = boardVo.getHit();
 		hit = hit+1;
 		boardVo.setHit(hit);
 		boardservice.plusHit(boardVo);
-		
+		*/
 		model.addAttribute("boardVo", boardVo);
 		
 		return "board/read";

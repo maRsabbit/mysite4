@@ -41,8 +41,9 @@
 	
 	<update id="plusHit" parameterType="com.mysite.vo.BoardVo" >
 		<![CDATA[
-			update board set hit=#{hit}
-			 where no=#{no}
+			update board
+			set hit=#{hit}+1
+			where no=#{no}
 		]]>
 	</update>
 	
