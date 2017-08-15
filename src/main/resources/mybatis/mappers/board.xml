@@ -15,6 +15,12 @@
 			order by no desc
 		]]>
 	</select>
+	<select id="getCount" resultType="com.mysite.vo.BoardVo">
+		<![CDATA[
+			select count(*)
+			from board
+		]]>
+	</select>
 	<select id="read" parameterType="int" resultType="com.mysite.vo.BoardVo">
 		<![CDATA[
 			select no as no,

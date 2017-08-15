@@ -37,6 +37,11 @@ public class BoardDao {
 		return sqlSession.delete("board.delete", vo);
 	}
 
+	public int count() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("board.getCount");
+	}
+
 
 
 

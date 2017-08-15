@@ -31,19 +31,36 @@
 						<th>작성일</th>
 						<th>&nbsp;</th>
 					</tr>
-					<c:forEach items="${list }" var="vo" varStatus="status">
+					<c:forEach items = "${boardList }" var ="vo">
 						<tr>
-							<td>${vo.no }</td>
-							<td><a
-								href="${pageContext.request.contextPath }/board/read/${vo.no }">${vo.title }</a></td>
-							<td>${vo.userName }</td>
-							<td>${vo.hit }</td>
-							<td>${vo.regDate }</td>
-							<td><c:if test="${authUser.no == vo.userNo }">
-									<a
-										href="${pageContext.request.contextPath }/board/delete/${vo.no }"
-										class="del">삭제</a>
-								</c:if></td>
+							<td>${vo.no}</td>
+							<c:choose>
+							<c:when  test= "${vo.orderNo} == 1">
+							<td><a href="${pageContext.request.contextPath}/replyboard/read?no=${vo.no}">-->${vo.title }	</a></td>
+							</c:when>
+							<c:when  test= "${vo.orderNo} == 2">
+							<td><a href="${pageContext.request.contextPath}/replyboard/read?no=${vo.no}"><p>-->--></p>${vo.title }	</a></td>
+							</c:when>
+							<c:when  test= "${vo.orderNo} == 3">
+							<td><a href="${pageContext.request.contextPath}/replyboard/read?no=${vo.no}">-->-->-->${vo.title }	</a></td>
+							</c:when>
+							<c:otherwise>
+							<td><a href="${pageContext.request.contextPath}/replyboard/read?no=${vo.no}">${vo.title }	</a></td>
+							</c:otherwise>
+							</c:choose>
+							<td>${vo.name }</td>
+							<td>${vo.hitNumber }</td>
+							<td>${vo.date }</td>
+							<c:choose>
+			 					<c:when test = "${authUser == null}">
+			 						<td>로그인 필요</td>
+			 					</c:when>
+			 					<c:otherwise>
+			 					<c:if test ="${authUser.no == vo.userNo}">
+									<td><a href="${pageContext.request.contextPath}/replyboard/delete?no=${vo.no}" class="del">삭제</a></td>
+								</c:if>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 					</c:forEach>
 				</table>

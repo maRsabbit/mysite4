@@ -40,6 +40,11 @@ public class BoardService {
 		return boarddao.delete(vo);
 	}
 
+	public int count() {
+		// TODO Auto-generated method stub
+		return boarddao.count();
+	}
+
 
 
 
